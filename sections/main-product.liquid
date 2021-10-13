@@ -306,14 +306,14 @@
             <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
           {%- endcase -%}
         {%- endfor -%}
+                {% if product.metafields.special_products.child_products %}
+        	<p>This is a master product, let's get the children</p>
+        {{ product.metafields.special_products.child_products }}
+        {% endif %}
       </div>
     </div>
   </div>
   {%- render 'cart-notification' -%}
-	{% if product.metafields.special_products.child_products %}
-  <p>This is a master product, let's get the children</p>
-  {{ product.metafields.special_products.child_products }}
-  {% endif %}
   <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal">
     <div class="product-media-modal__dialog" role="dialog" aria-label="{{ 'products.modal.label' | t }}" aria-modal="true" tabindex="-1">
       <button id="ModalClose-{{ section.id }}" type="button" class="product-media-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
