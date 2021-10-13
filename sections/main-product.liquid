@@ -306,9 +306,12 @@
             <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
           {%- endcase -%}
         {%- endfor -%}
-                {% if product.metafields.special_products.child_products %}
+        {% if product.metafields.special_products.child_products %}
         	<p>This is a master product, let's get the children</p>
-        {{ product.metafields.special_products.child_products }}
+        	{% assign children = product.metafields.special_products.child_products | split: "|" %}
+        	{% for child in children %}
+          		<h5>{{ all_products[child].title }}</h5>
+        	{% endfor %}
         {% endif %}
       </div>
     </div>
