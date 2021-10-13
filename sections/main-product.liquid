@@ -315,6 +315,13 @@
         <ul>
         		{% for option in childProduct.options_with_values %}
           			<li>{{ option.name }}</li>
+          			<ul>
+                      {%- for value in option.values -%}
+                            <li value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                              {{ value }}
+                            </li>
+                          {%- endfor -%}
+          			</ul>	
         		{% endfor %}
         </ul>
         	{% endfor %}
