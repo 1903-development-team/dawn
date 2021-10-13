@@ -310,7 +310,13 @@
         	<p>This is a master product, let's get the children</p>
         	{% assign children = product.metafields.special_products.child_products | split: "|" %}
         	{% for child in children %}
-          		<h5>{{ all_products[child].title }}</h5>
+        		{% assign childProduct = all_products[child] %}
+          		<h5>{{ childProduct.title }}</h5>
+        <ul>
+        		{% for option in childProduct.options_with_values %}
+          <li>{{ options.name }}</li>
+        		{% endfor %}
+        </ul>
         	{% endfor %}
         {% endif %}
       </div>
